@@ -1,0 +1,394 @@
+<html>
+
+<head>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+        }
+        
+        body {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            background: linear-gradient(-140deg, #6ea6a8, #163049);
+            background-size: 400% 500%;
+            animation: BgGradient 20s ease infinite;
+        }
+        
+        @keyframes BgGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        
+         ::-webkit-scrollbar {
+            width: 0;
+        }
+        
+        #scrollPath {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        
+        #progressbar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 10px;
+            background: linear-gradient(to top, #008aff, #00ffe7);
+            animation: rgbbar 5s linear infinite;
+        }
+        
+        @keyframes rgbbar {
+            0%,
+            100% {
+                filter: hue-rotate(0deg);
+            }
+            50% {
+                filter: hue-rotate(360deg);
+            }
+        }
+        
+        #progressbar:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #008aff, #00ffe7);
+            filter: blur(10px);
+        }
+        
+        #progressbar:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, #008aff, #00ffe7);
+            filter: blur(30px);
+        }
+        
+        .card-info:nth-child(1) {
+            font-size: 30px;
+            font-weight: bold;
+            padding: 10px;
+            line-height: 25px;
+            color: #fff;
+        }
+        
+        .contenedor {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            width: 940px;
+            height: 1650px;
+            gap: 20px;
+            margin: auto;
+            justify-items: center;
+            align-items: center;
+        }
+        
+        .car1 {
+            height: 1450px;
+            right: 65px;
+            top: 135px;
+            z-index: 40;
+            width: 750px;
+            overflow: hidden;
+            position: absolute;
+            margin: auto;
+            padding: 10px 30px;
+            border-radius: 6%;
+            border: 7px solid #ec9a9ab0;
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            background: linear-gradient(-150deg, #EFCAC4, #cbd1c9);
+            animation: BgGradient 20s ease infinite;
+            background-size: 400% 400%;
+            ;
+            font-weight: bold;
+            color: rgb(17, 17, 17);
+            text-align: justify;
+            font-family: 'Roboto';
+        }
+        
+        .titulo {
+            height: 70px;
+            right: 140px;
+            top: 35px;
+            z-index: 40;
+            width: 600px;
+            overflow: hidden;
+            position: absolute;
+            font-family: 'Roboto';
+            margin: auto;
+            padding: 100px 30px;
+            border-radius: 10px;
+            border: 4px solid #ec9a9ab0;
+            box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            background: linear-gradient(-150deg, #EFCAC4, #cbd1c9);
+            font-size: 60px;
+            font-weight: bold;
+            padding: 14px;
+            line-height: 25px;
+            color: rgb(0, 0, 0);
+            animation: BgGradient 20s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        .boton {
+            text-decoration: none;
+            border: 3px solid #ec9a9ab0;
+            padding: 20px;
+            font-weight: 300;
+            font-size: 20px;
+            color: #ffffff;
+            background: linear-gradient(-140deg, #3b678d, #1d3a55);
+            border-radius: 6px;
+            transition: all 1s;
+            margin: 25px auto;
+            width: 30%;
+            position: absolute;
+            left: 20px;
+            top: 8px;
+            background-position: center;
+            background: linear-gradient(-150deg, #EFCAC4, #cbd1c9);
+        }
+        
+        .boton:hover {
+            color: #000000;
+            transition: all .8s;
+            border-radius: 60px;
+            padding: 25px;
+        }
+        
+        .boton:active {
+            padding: 7;
+            color: white
+        }
+        
+        .sk-chase {
+            width: 40px;
+            height: 40px;
+            position: relative;
+            animation: sk-chase 2.5s infinite linear both;
+        }
+        
+        .sk-chase-dot {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            animation: sk-chase-dot 2.0s infinite ease-in-out both;
+        }
+        
+        .sk-chase-dot:before {
+            content: '';
+            display: block;
+            width: 25%;
+            height: 25%;
+            background-color: #EC9A9A;
+            border-radius: 100%;
+            animation: sk-chase-dot-before 2.0s infinite ease-in-out both;
+        }
+        
+        .sk-chase-dot:nth-child(1) {
+            animation-delay: -1.1s;
+        }
+        
+        .sk-chase-dot:nth-child(2) {
+            animation-delay: -1.0s;
+        }
+        
+        .sk-chase-dot:nth-child(3) {
+            animation-delay: -0.9s;
+        }
+        
+        .sk-chase-dot:nth-child(4) {
+            animation-delay: -0.8s;
+        }
+        
+        .sk-chase-dot:nth-child(5) {
+            animation-delay: -0.7s;
+        }
+        
+        .sk-chase-dot:nth-child(6) {
+            animation-delay: -0.6s;
+        }
+        
+        .sk-chase-dot:nth-child(1):before {
+            animation-delay: -1.1s;
+        }
+        
+        .sk-chase-dot:nth-child(2):before {
+            animation-delay: -1.0s;
+        }
+        
+        .sk-chase-dot:nth-child(3):before {
+            animation-delay: -0.9s;
+        }
+        
+        .sk-chase-dot:nth-child(4):before {
+            animation-delay: -0.8s;
+        }
+        
+        .sk-chase-dot:nth-child(5):before {
+            animation-delay: -0.7s;
+        }
+        
+        .sk-chase-dot:nth-child(6):before {
+            animation-delay: -0.6s;
+        }
+        
+        @keyframes sk-chase {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes sk-chase-dot {
+            80%,
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+        
+        @keyframes sk-chase-dot-before {
+            50% {
+                transform: scale(0.4);
+            }
+            100%,
+            0% {
+                transform: scale(1.0);
+            }
+        }
+        
+        .loader {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(46, 46, 46, 0.952);
+            position: fixed;
+            top: 0;
+            z-index: 200000;
+            clip-path: circle(250.0% at 50% 50%);
+            transition: clip-path 1s ease-in-out;
+        }
+        
+        .loader2 {
+            clip-path: circle(0% at 50% 50%);
+        }
+        
+        .imagenflo {
+            animation: movimientos 15s linear infinite;
+            z-index: 300;
+            position: absolute;
+            top: 170px;
+            left: 35px;
+            border-radius: 50%;
+            border-top: 8px solid #EC9A9A;
+            border-bottom: 8px #EC9A9A;
+            width: 350px;
+            height: 350px;
+        }
+        
+        .imagenflo2 {
+            animation: movimientos 10s linear infinite;
+            z-index: 300;
+            position: absolute;
+            top: 570px;
+            left: 35px;
+            border-radius: 50%;
+            border-top: 8px solid #EC9A9A;
+            border-bottom: 8px #EC9A9A;
+            width: 350px;
+            height: 350px;
+        }
+        
+        @keyframes movimientos {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(30px);
+            }
+            100% {
+                transform: translateY(0);
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <title>Conos y bastones</title>
+</head>
+
+<body bgcolor="#EA62FF">
+
+    <div class="loader" id="loader">
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
+    </div>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+
+    <center>
+        <div class="contenedor">
+            <font size=30 class="titulo"> Conos y bastones</font><br><br>
+    </center>
+    <font size=6 class="card-info car1">Los conos y los bastones son celulas especializadas, llamadas celulas fotorreceptoras, que se encuentran en la retina y son responsables de nuestra vision. <br><br>CELULAS FOTORRECEPTORES BASTONES<br><br> Hay muchos mas celulas fotorreceptores bastones
+        que celulas fotorreceptores conos en la retina, especialmente fuera de la macula. <br>El ojo humano contiene unos 130 millones de bastones y unos 7 millones de conos. Los bastones sirven: <br><br>Se utilizan para la vision periferica y se concentran
+        en los bordes externos de la retina, Responsables de nuestra vision nocturna, <br>Los bastones son necesarios para la percepcion de la luz y la oscuridad y para adaptarse a la vision nocturna, Sirven para la deteccion del movimiento,<br><br> No
+        se pueden transmitir imagenes nitidas o percibir detalles finos sin conos. Las celulas conos nos dan nuestra vision fina Sin conos no hay sensibilidad al color Las celulas cono nos permiten ver en color, En la retina se encuentran muchas mas celulas
+        baston que celulas cono especialmente fuera de la macula. Las celulas bastones sirven para nuestra vision periferica.<br> CELULAS FOTORRECEPTORES CONO: Estan concentrados en la macula,Son las unicas celulas que se encuentran en la fovea Responsables
+        de la vision central ,Nos dan la percepcion del color. </font>
+    <a href="index.html">
+        <button id="boton1" class="boton">Regresar al menu</button>
+    </a>
+
+
+    <img src="http://3.bp.blogspot.com/_kaQ5P19FVgk/TF63F3sfwLI/AAAAAAAAGqU/lK6miA16HHE/s280/Cono_ojo.JPG" border="0" class="imagenflo">
+    <img src="data:image/png;base64,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"
+        border="0" class="imagenflo2">
+
+    </div>
+    <script src="main.js"></script>
+    <script type="text/javascript">
+        let progress = document.getElementById('progressbar');
+        let totalHeiht = document.body.scrollHeight - window.innerHeight;
+        window.onscroll = function() {
+            let progressHeight = (window.pageYOffset / totalHeiht) * 100;
+            progress.style.height = progressHeight + "%";
+        }
+    </script>
+</body>
+
+</html>
